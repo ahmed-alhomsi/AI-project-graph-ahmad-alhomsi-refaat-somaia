@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Deliverer Problem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .path {
+            font-weight: bold;
+            color: green;
+        }
+
+        .cost {
+            color: blue;
+        }
+
+        .no-path {
+            color: red;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        body>div {
+            padding-top: 25px;
+        }
+    </style>
+</head>
+
+<body class="text-center font-weight-bold bg-warning">
+    <h1>Deliverer Problem</h1>
+
+    <div class="result" id="dfsResult"></div>
+    <div class="result" id="bfsResult"></div>
+    <div class="result" id="ucsResult"></div>
+    <div class="result" id="aStarResult"></div>
+
+    <script src="SecondPart.js"></script>
+    <script>
+        function updateVisualization(algorithm, result) {
+            const resultElement = document.getElementById(`${algorithm}Result`);
+
+            if (result.path.length > 0) {
+                resultElement.innerHTML = `<p>${algorithm} Path: <span class="path">${result.path.join(' -> ')}</span></p>`;
+                resultElement.innerHTML += `<p>Total Cost: <span class="cost">${result.cost}</span></p>`;
+            } else {
+                resultElement.innerHTML = `<p class="no-path">No path found using ${algorithm}.</p>`;
+            }
+        }
+
+        updateVisualization('dfs', dfsResult);
+
+        updateVisualization('bfs', bfsResult);
+
+        updateVisualization('ucs', ucsResult);
+
+        updateVisualization('aStar', aStarResult);
+    </script>
+</body>
+
+</html>
